@@ -5,10 +5,9 @@ __cmdtime_current_time() {
 }
 
 __cmdtime_format_duration() {
-  local hours=$(printf '%.0f' $(($1 / 3600)))
-  local mins=$(printf '%.0f' $((($1 - hours * 3600) / 60)))
+  local hours=$(printf '%u' $(($1 / 3600)))
+  local mins=$(printf '%u' $((($1 - hours * 3600) / 60)))
   local secs=$(printf "%.3f" $(($1 - 60 * mins - 3600 * hours)))
-
   if [[ ! "${mins}" == "0" ]] || [[ ! "${hours}" == "0" ]]; then
       # If there are a non zero number of minutes or hours 
       # then display integer number of seconds
